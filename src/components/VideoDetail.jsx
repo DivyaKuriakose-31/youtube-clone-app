@@ -22,7 +22,7 @@ export default function VideoDetail() {
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={3}>
         <Box flex={1}>
           <Box sx={{ width: '100%', position: 'relative', borderRadius: '16px', overflow: 'hidden', aspectRatio: '16/9' }}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls playing config={{ youtube: { playerVars: { showinfo: 1 } } }} />
+            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls playing/>
           </Box>
           <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
             {title}
