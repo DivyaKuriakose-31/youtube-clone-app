@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Stack, Paper, IconButton } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import { useNavigate, Link } from 'react-router-dom';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 export default function Navbar() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,9 +31,28 @@ export default function Navbar() {
         zIndex: 10 
       }}
     >
-      <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-        <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#F31503', letterSpacing: '-1px' }}>▶ YouTubeClone</span>
-      </Link>
+    <Link
+  to="/"
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    textDecoration: 'none',
+    gap: '6px',
+  }}
+>
+  <YouTubeIcon sx={{ color: '#FF0000', fontSize: 36 }} />
+
+  <span
+    style={{
+      color: 'white',
+      fontSize: '22px',
+      fontWeight: 'bold',
+      fontFamily: 'Roboto, sans-serif',
+    }}
+  >
+    YouTube
+  </span>
+</Link>
 
       <Paper 
         component="form" 
@@ -54,7 +74,9 @@ export default function Navbar() {
           style={{ 
             border: 'none', 
             outline: 'none', 
-            width: '250px', 
+            width:{
+              xs: '170px',sm: '250px',md: '420px'
+            } ,
             background: 'transparent',
             // Explicitly set the text color inside the white input background to black
             color: '#000000' 

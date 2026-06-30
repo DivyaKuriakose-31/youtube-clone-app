@@ -7,8 +7,8 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
       direction="row"
       sx={{
         overflowY: 'auto',
-        height: { sx: 'auto', md: '95%' },
-        flexDirection: { md: 'column' },
+        height: { xs: 'auto', md: '95vh' },
+        flexDirection: { xs: 'row',md: 'column' },
         borderRight: '1px solid #1e1e1e',
         px: { sx: 0, md: 2 },
         gap: 1

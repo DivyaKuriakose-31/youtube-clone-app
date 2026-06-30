@@ -4,9 +4,10 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function VideoCard({ video: { id: { videoId }, snippet } }) {
   return (
-    <Card sx={{ width: { xs: '100%', sm: '358px', md: "320px" }, boxShadow: 'none', borderRadius: '12px', backgroundColor: '#1e1e1e' }}>
+    <Card
+       sx={{ width:'100%',maxWidth:'360px',background:'#181818',borderRadius:'12px'}}>
       <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hK3I`}>
-        <CardMedia image={snippet?.thumbnails?.high?.url} sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} />
+        <CardMedia image={snippet?.thumbnails?.high?.url} sx={{ width: { xs: '100%', sm: '358px'}, height: 202 }} />
       </Link>
       <CardContent sx={{ height: '106px' }}>
         <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hK3I`}>
