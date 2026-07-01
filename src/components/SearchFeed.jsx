@@ -6,28 +6,25 @@ import { fetchFromAPI } from '../utils/fetchFromAPI';
 
 export default function SearchFeed() {
   const [videos, setVideos] = useState([]);
-  const { searchTerm } = useParams();
+  const { searchTerm } = useParams(); // 👈 Captures the words (like 'fifa') from the address bar path
 
   useEffect(() => {
-    fetchFromAPI(`search?part=snippet&q=${searchTerm}`)
-      .then((data) => setVideos(data.items || []));
-  }, [searchTerm]);
+    fetchFromAPI(`search?part=snippet&q=${searchTerm}&maxResults=50`)
+      .then((data) => {
+        if (data?.items) {
+          setVideos(data.items);
+        }
+      })
+      .catch((err) => console.error("Search API Error:", err));
+  }, [searchTerm]); // 🚀 Refreshes the display list instantly whenever a user types a new word
 
   return (
-    // 👈 No Sidebar elements inside this layout container for full-width view
-    <Box p={4} sx={{ overflowY: 'auto', height: '90vh', backgroundColor: '#fff' }}>
-      <Typography variant="h5" fontWeight="bold" mb={4} sx={{ color: '#000' }}>
+    <Box p={3} sx={{ overflowY: 'auto', height: '90vh', flex: 1, backgroundColor: '#fff' }}>
+      <Typography variant="h5" fontWeight="bold" mb={3} sx={{ color: '#000' }}>
         Search Results for: <span style={{ color: '#F31503' }}>{searchTerm}</span> videos
       </Typography>
 
-      <Box 
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '24px',
-          justifyContent: 'flex-start'
-        }}
-      >
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'flex-start' }}>
         {videos.map((item, idx) => (
           <Box 
             key={idx}
@@ -36,7 +33,7 @@ export default function SearchFeed() {
                 xs: '100%', 
                 sm: 'calc(50% - 12px)', 
                 md: 'calc(33.333% - 16px)', 
-                lg: 'calc(25% - 18px)' 
+                lg: 'calc(25% - 18px)'
               }
             }}
           >
