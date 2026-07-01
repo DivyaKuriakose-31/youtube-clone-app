@@ -14,26 +14,21 @@ export default function Feed() {
   }, [selectedCategory]);
 
   return (
-    <Stack direction={{ xs: "column", md: "row" }} sx={{ backgroundColor: '#fff', minHeight: '100vh' }}>
-      {/* Dynamic Sidebar Container */}
+    <Stack direction="row" sx={{ backgroundColor: '#fff', minHeight: '100vh' }}>
+      {/* 👈 Sidebar locked back to the left side */}
       <Box 
         sx={{ 
-          width: { xs: '100%', md: '240px' }, 
-          borderRight: { xs: 'none', md: '1px solid #e3e3e3' }, 
-          borderBottom: { xs: '1px solid #e3e3e3', md: 'none' }, // Divider shift for mobile
+          width: { xs: '200px', md: '240px' }, 
+          borderRight: '1px solid #e3e3e3', 
           px: 2, 
-          pt: 1,
-          position: { xs: 'sticky', md: 'static' },
-          top: { xs: '0px', md: 'auto' },
-          backgroundColor: '#fff',
-          zIndex: 10
+          pt: 2 
         }}
       >
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       </Box>
 
-      {/* Video Content Grid Section */}
-      <Box p={3} sx={{ overflowY: 'auto', height: { xs: 'calc(100vh - 60px)', md: '90vh' }, flex: 1 }}>
+      {/* Main Video Section */}
+      <Box p={3} sx={{ overflowY: 'auto', height: '90vh', flex: 1 }}>
         <Typography variant="h5" fontWeight="bold" mb={3} sx={{ color: '#000' }}>
           {selectedCategory} <span style={{ color: '#F31503' }}>Videos</span>
         </Typography>
@@ -51,8 +46,8 @@ export default function Feed() {
               key={idx}
               sx={{
                 width: {
-                  xs: '100%',             // 1 Full-width Video item per row on mobile screens
-                  sm: 'calc(50% - 12px)', // 2 Columns on intermediate viewports
+                  xs: '100%', 
+                  sm: 'calc(50% - 12px)', 
                   md: 'calc(33.333% - 16px)', 
                   lg: 'calc(25% - 18px)'
                 }
