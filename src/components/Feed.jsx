@@ -14,8 +14,10 @@ export default function Feed() {
   }, [selectedCategory]);
 
   return (
+    // 🏢 Clean White App Background Layout
     <Stack direction={{ xs: "column", md: "row" }} sx={{ backgroundColor: '#fff', minHeight: '100vh' }}>
-      {/* Sidebar Box Component */}
+      
+      {/* Sidebar Navigation Panel Column */}
       <Box 
         sx={{ 
           width: { xs: '100%', md: '240px' }, 
@@ -23,14 +25,14 @@ export default function Feed() {
           borderBottom: { xs: '1px solid #e3e3e3', md: 'none' },
           px: 2, 
           py: 2,
-          maxHeight: { xs: '200px', md: 'none' }, // Caps mobile height with independent scrolling down
+          maxHeight: { xs: '200px', md: 'none' }, 
           overflowY: 'auto'
         }}
       >
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
       </Box>
 
-      {/* Main Video Section */}
+      {/* Main Video Presentation Grid Area */}
       <Box p={3} sx={{ overflowY: 'auto', height: '90vh', flex: 1 }}>
         <Typography variant="h5" fontWeight="bold" mb={3} sx={{ color: '#000' }}>
           {selectedCategory} <span style={{ color: '#F31503' }}>Videos</span>

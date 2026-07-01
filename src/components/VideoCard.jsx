@@ -4,46 +4,32 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function VideoCard({ video: { id: { videoId }, snippet } }) {
   return (
-    <Card 
-      sx={{ 
-        width: '100%', 
-        boxShadow: 'none', 
-        borderRadius: '0px', // YouTube standard card layout
-        backgroundColor: 'transparent',
-        overflow: 'hidden'
-      }}
-    >
-      {/* Video Thumbnail Wrapper */}
+    <Card sx={{ width: '100%', boxShadow: 'none', borderRadius: '0px', backgroundColor: 'transparent', overflow: 'hidden' }}>
       <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hK3U`} style={{ textDecoration: 'none' }}>
         <Box sx={{ width: '100%', aspectRatio: '16/9', borderRadius: '12px', overflow: 'hidden', backgroundColor: '#f0f0f0' }}>
           <CardMedia 
             component="img"
             image={snippet?.thumbnails?.high?.url || snippet?.thumbnails?.medium?.url} 
             alt={snippet?.title} 
-            sx={{ 
-              width: '100%', 
-              height: '100%',
-              objectFit: 'cover' // 👈 Clean crop rule ensuring absolute image uniformity
-            }} 
+            sx={{ width: '100%', height: '100%', objectFit: 'cover' }} 
           />
         </Box>
       </Link>
 
-      {/* Video Details */}
       <CardContent sx={{ backgroundColor: 'transparent', p: '12px 0px 0px 0px !important' }}>
         <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hK3U`} style={{ textDecoration: 'none' }}>
           <Typography 
             variant="subtitle1" 
             fontWeight="600" 
             sx={{
-              color: '#0f0f0f !important',
+              color: '#000 !important', // 👈 Black color for video title descriptions
               display: '-webkit-box',
               WebkitLineClamp: 2, 
               WebkitBoxOrient: 'vertical',
               overflow: 'hidden',
               lineHeight: '1.4rem',
               fontSize: '0.95rem',
-              height: '2.8rem', // Locks title text bounding height uniform
+              height: '2.8rem', 
               mb: '4px'
             }}
           >
