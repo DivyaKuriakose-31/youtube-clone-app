@@ -4,42 +4,50 @@ import { categories } from '../utils/constants';
 export default function Sidebar({ selectedCategory, setSelectedCategory }) {
   return (
     <Stack
-      direction="row"
+      // Horizontal row style for mobile, vertical column style for desktop
+      direction={{ xs: 'row', md: 'column' }}
       sx={{
-        overflowY: 'auto',
-        height: { xs: 'auto', md: '95vh' },
-        flexDirection: { xs: 'row',md: 'column' },
-        borderRight: '1px solid #1e1e1e',
-        px: { sx: 0, md: 2 },
-        gap: 1
+        overflowY: { xs: 'auto', md: 'auto' },
+        overflowX: { xs: 'auto', md: 'hidden' }, // Allows swipe-scrolling horizontally on phone
+        height: { xs: 'auto', md: '95%' },
+        gap: '10px',
+        py: { xs: 1, md: 0 },
+        // Hides scrollbar visual lines to keep UI clean
+        '&::-webkit-scrollbar': { display: 'none' },
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
       }}
     >
       {categories.map((category) => (
         <button
-          key={category.name}
+          className="category-btn"
           onClick={() => setSelectedCategory(category.name)}
           style={{
-            background: category.name === selectedCategory ? '#FC1503' : 'transparent',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '20px',
-            padding: '10px 20px',
+            background: category.name === selectedCategory ? '#F31503' : 'transparent',
+            color: category.name === selectedCategory ? 'white' : '#000',
             display: 'flex',
             alignItems: 'center',
-            gap: '15px',
+            justifyContent: 'flex-start',
+            gap: '12px',
+            padding: '8px 16px',
+            borderRadius: '20px',
+            border: 'none',
             cursor: 'pointer',
-            fontWeight: 'bold',
-            textAlign: 'left',
-            transition: 'all 0.3s ease',
+            fontWeight: '600',
+            whiteSpace: 'nowrap', // Prevents button text from breaking into two lines on mobile
+            fontSize: '0.88rem',
+            backgroundColor: category.name === selectedCategory ? '#F31503' : '#f2f2f2'
           }}
-          className="category-btn"
+          key={category.name}
         >
-          <span style={{ color: category.name === selectedCategory ? 'white' : '#FC1503' }}>
+          <span style={{ 
+            color: category.name === selectedCategory ? 'white' : '#F31503',
+            display: 'flex',
+            alignItems: 'center'
+          }}>
             {category.icon}
           </span>
-          <span style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}>
-            {category.name}
-          </span>
+          <span>{category.name}</span>
         </button>
       ))}
     </Stack>
