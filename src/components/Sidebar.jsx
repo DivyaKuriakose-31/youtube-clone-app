@@ -4,15 +4,12 @@ import { categories } from '../utils/constants';
 export default function Sidebar({ selectedCategory, setSelectedCategory }) {
   return (
     <Stack
-      // Horizontal row style for mobile, vertical column style for desktop
-      direction={{ xs: 'row', md: 'column' }}
+      direction="column" // 👈 Forces the menu categories straight downwards on ALL devices
       sx={{
-        overflowY: { xs: 'auto', md: 'auto' },
-        overflowX: { xs: 'auto', md: 'hidden' }, // Allows swipe-scrolling horizontally on phone
-        height: { xs: 'auto', md: '95%' },
-        gap: '10px',
-        py: { xs: 1, md: 0 },
-        // Hides scrollbar visual lines to keep UI clean
+        overflowY: 'auto',
+        height: '100%',
+        gap: '6px',
+        // Hides browser scrollbar visual lines
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
@@ -29,14 +26,14 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
             alignItems: 'center',
             justifyContent: 'flex-start',
             gap: '12px',
-            padding: '8px 16px',
-            borderRadius: '20px',
+            padding: '10px 16px',
+            borderRadius: '12px',
             border: 'none',
             cursor: 'pointer',
             fontWeight: '600',
-            whiteSpace: 'nowrap', // Prevents button text from breaking into two lines on mobile
-            fontSize: '0.88rem',
-            backgroundColor: category.name === selectedCategory ? '#F31503' : '#f2f2f2'
+            width: '100%', // Makes sure buttons stack beautifully downwards
+            textAlign: 'left',
+            backgroundColor: category.name === selectedCategory ? '#F31503' : 'transparent'
           }}
           key={category.name}
         >

@@ -14,14 +14,17 @@ export default function Feed() {
   }, [selectedCategory]);
 
   return (
-    <Stack direction="row" sx={{ backgroundColor: '#fff', minHeight: '100vh' }}>
-      {/* 👈 Sidebar locked back to the left side */}
+    <Stack direction={{ xs: "column", md: "row" }} sx={{ backgroundColor: '#fff', minHeight: '100vh' }}>
+      {/* Sidebar Box Component */}
       <Box 
         sx={{ 
-          width: { xs: '200px', md: '240px' }, 
-          borderRight: '1px solid #e3e3e3', 
+          width: { xs: '100%', md: '240px' }, 
+          borderRight: { xs: 'none', md: '1px solid #e3e3e3' },
+          borderBottom: { xs: '1px solid #e3e3e3', md: 'none' },
           px: 2, 
-          pt: 2 
+          py: 2,
+          maxHeight: { xs: '200px', md: 'none' }, // Caps mobile height with independent scrolling down
+          overflowY: 'auto'
         }}
       >
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
