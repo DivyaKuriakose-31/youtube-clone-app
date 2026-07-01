@@ -9,7 +9,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         overflowY: 'auto',
         height: '100%',
         gap: '6px',
-        backgroundColor: '#efe7e7e9', // Matches your black background requirement
+        backgroundColor: '#f5f0f0', // Matches your black background requirement
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
@@ -39,7 +39,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         >
           {/* Automatically styles whatever icon you already have inside your array */}
           <span style={{ 
-            color: 'white',
+            color: 'black',
             display: 'flex',
             alignItems: 'center',
             fontSize: '1.3rem'
