@@ -9,7 +9,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory }) {
         overflowY: 'auto',
         height: '100%',
         gap: '6px',
-        backgroundColor: '#000', // Matches your black background requirement
+        backgroundColor: '#efe7e7e9', // Matches your black background requirement
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
